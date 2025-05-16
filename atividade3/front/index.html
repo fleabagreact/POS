@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNook - Sistema de Biblioteca</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header text-center">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-book">
+                    <div class="logo-book-cover"></div>
+                    <div class="logo-book-pages"></div>
+                </div>
+                <h1 class="display-4">BookNook</h1>
+            </div>
+            <p class="lead">Sua biblioteca digital</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <!-- Cadastrar Livro -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-book-medical me-2"></i>Cadastrar Novo Livro
+                    </div>
+                    <div class="card-body">
+                        <form id="cadastrarLivroForm">
+                            <div class="mb-3">
+                                <label for="titulo" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="titulo" placeholder="Digite o título do livro" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="autor" class="form-label">Autor</label>
+                                <input type="text" class="form-control" id="autor" placeholder="Digite o nome do autor" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ano" class="form-label">Ano de Publicação</label>
+                                <input type="text" class="form-control" id="ano" placeholder="Digite o ano de publicação" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-save me-2"></i>Cadastrar Livro
+                            </button>
+                        </form>
+                        <div class="result-box mt-3" id="cadastrarLivroResult">
+                            <p class="text-muted">Nenhum livro cadastrado ainda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listar Livros -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-books me-2"></i>Lista de Livros
+                    </div>
+                    <div class="card-body">
+                        <button id="listarLivrosBtn" class="btn btn-success w-100 mb-3">
+                            <i class="fas fa-sync-alt me-2"></i>Atualizar Lista
+                        </button>
+                        <div class="result-box" id="listarLivrosResult">
+                            <div class="book-item">
+                                <h5><i class="fas fa-book me-2"></i>Dom Casmurro</h5>
+                                <p><strong>Autor:</strong> Machado de Assis</p>
+                                <p><strong>Ano:</strong> 1899</p>
+                                <p><strong>Status:</strong> <span class="available">Disponível</span></p>
+                            </div>
+                            <div class="book-item">
+                                <h5><i class="fas fa-book me-2"></i>1984</h5>
+                                <p><strong>Autor:</strong> George Orwell</p>
+                                <p><strong>Ano:</strong> 1949</p>
+                                <p><strong>Status:</strong> <span class="unavailable">Emprestado</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Buscar Livro -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-search me-2"></i>Buscar Livro por Título
+                    </div>
+                    <div class="card-body">
+                        <form id="buscarLivroForm">
+                            <div class="mb-3">
+                                <label for="tituloBusca" class="form-label">Título do Livro</label>
+                                <input type="text" class="form-control" id="tituloBusca" placeholder="Digite o título para buscar" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search me-2"></i>Buscar Livro
+                            </button>
+                        </form>
+                        <div class="result-box mt-3" id="buscarLivroResult">
+                            <p class="text-muted">Digite um título para buscar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cadastrar Usuário -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-user-plus me-2"></i>Cadastrar Novo Usuário
+                    </div>
+                    <div class="card-body">
+                        <form id="cadastrarUsuarioForm">
+                            <div class="mb-3">
+                                <label for="nomeUsuario" class="form-label">Nome do Usuário</label>
+                                <input type="text" class="form-control" id="nomeUsuario" placeholder="Digite o nome do usuário" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-user-edit me-2"></i>Cadastrar Usuário
+                            </button>
+                        </form>
+                        <div class="result-box mt-3" id="cadastrarUsuarioResult">
+                            <p class="text-muted">Nenhum usuário cadastrado ainda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Realizar Empréstimo -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-exchange-alt me-2"></i>Realizar Empréstimo
+                    </div>
+                    <div class="card-body">
+                        <form id="emprestimoForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="usuarioUuid" class="form-label">UUID do Usuário</label>
+                                    <input type="text" class="form-control" id="usuarioUuid" placeholder="Digite o UUID do usuário" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="livroUuid" class="form-label">UUID do Livro</label>
+                                    <input type="text" class="form-control" id="livroUuid" placeholder="Digite o UUID do livro" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dataEmprestimo" class="form-label">Data do Empréstimo</label>
+                                    <input type="date" class="form-control" id="dataEmprestimo" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="dataDevolucao" class="form-label">Data de Devolução</label>
+                                    <input type="date" class="form-control" id="dataDevolucao" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-handshake me-2"></i>Registrar Empréstimo
+                            </button>
+                        </form>
+                        <div class="result-box mt-3" id="emprestimoResult">
+                            <p class="text-muted">Preencha os dados para realizar um empréstimo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <div class="container">
+            <div class="logo-container small">
+                <div class="logo-book">
+                    <div class="logo-book-cover"></div>
+                    <div class="logo-book-pages"></div>
+                </div>
+                <h3>BookNook</h3>
+            </div>
+            <p class="mb-0">Sistema de Gerenciamento de Biblioteca Digital</p>
+            <p class="mb-0 mt-2">&copy; 2023 - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
